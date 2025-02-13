@@ -3,7 +3,7 @@ BAUDRATE=115200
 PROJECT=avr_pisca_led
 DEVICE=ATmega328P
 
-CC_PATH="C:\Program Files\Microchip\xc8\v2.46\bin"
+CC_PATH="C:\Program Files\Microchip\xc8\v3.00\bin"
 CC="$(CC_PATH)\xc8-cc.exe"
 OBJCP="$(CC_PATH)\avr-objcopy"
 BUILD=build/default/production
@@ -69,15 +69,10 @@ notepad:
 
 flash:
 	@C:\Program Files (x86)\AVRDUDESS\avrdude.exe -c arduino -p m328p -P $(COM) -b $(BAUDRATE) -U flash:w:$(HEX_PATH):a 
-#	avrdude -c arduino -p m328p -P $(COM) -b $(BAUDRATE) -U flash:w:$(HEX_PATH):a 
+#	avrdude -c arduino -p ATmega328P -p $(COM) -b $(BAUDRATE) -U flash:w:$(HEX_PATH):a 
+
 
 flasher:
 	@C:\Program Files (x86)\AVRDUDESS\avrdudess.exe
 
-
-
-install_win:
-	winget install AVRDudes.AVRDUDESS\avrdude
-	winget install Chocolatey.Chocolatey
-	choco install  make
 
